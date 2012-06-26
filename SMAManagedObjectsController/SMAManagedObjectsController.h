@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface SMAManagedObjectsController : NSObject
-
-@end
+#import <CoreData/CoreData.h>
+#import "ManagedObjectsController.h"
+#import "ManagedObjectValueDisplay.h"

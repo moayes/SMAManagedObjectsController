@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		5B8B2AFA159A5D0600C1C9C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2AF9159A5D0600C1C9C8 /* Foundation.framework */; };
-		5B8B2B00159A5D0600C1C9C8 /* SMAManagedObjectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2AFF159A5D0600C1C9C8 /* SMAManagedObjectsController.m */; };
 		5B8B2B08159A5D0700C1C9C8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2B07159A5D0700C1C9C8 /* SenTestingKit.framework */; };
-		5B8B2B0A159A5D0700C1C9C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2B09159A5D0700C1C9C8 /* UIKit.framework */; };
 		5B8B2B0B159A5D0700C1C9C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2AF9159A5D0600C1C9C8 /* Foundation.framework */; };
 		5B8B2B0E159A5D0700C1C9C8 /* libSMAManagedObjectsController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2AF6159A5D0600C1C9C8 /* libSMAManagedObjectsController.a */; };
 		5B8B2B14159A5D0700C1C9C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B8B2B12159A5D0700C1C9C8 /* InfoPlist.strings */; };
 		5B8B2B17159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2B16159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.m */; };
+		5B8B2B21159A5D2F00C1C9C8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2B20159A5D2F00C1C9C8 /* CoreData.framework */; };
+		5B8B2B2C159A644B00C1C9C8 /* ManagedObjectsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B8B2B2A159A644B00C1C9C8 /* ManagedObjectsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B8B2B2D159A644B00C1C9C8 /* ManagedObjectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2B2B159A644B00C1C9C8 /* ManagedObjectsController.m */; };
+		5B8B2B38159A64DE00C1C9C8 /* ManagedObjectValueDisplay.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B8B2B36159A64DE00C1C9C8 /* ManagedObjectValueDisplay.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B8B2B39159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2B37159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m */; };
+		5B8B2B3A159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2B37159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m */; };
+		5B8B2B3B159A65EB00C1C9C8 /* SMAManagedObjectsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B8B2AFE159A5D0600C1C9C8 /* SMAManagedObjectsController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B8B2B3C159A660500C1C9C8 /* ManagedObjectsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8B2B2B159A644B00C1C9C8 /* ManagedObjectsController.m */; };
+		5B8B2B3D159A661900C1C9C8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2B20159A5D2F00C1C9C8 /* CoreData.framework */; };
+		5B8B2B3F159A66F000C1C9C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8B2B3E159A66F000C1C9C8 /* UIKit.framework */; };
+		5B8B2B42159A690600C1C9C8 /* ARCHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B8B2B41159A690600C1C9C8 /* ARCHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +39,21 @@
 /* Begin PBXFileReference section */
 		5B8B2AF6159A5D0600C1C9C8 /* libSMAManagedObjectsController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSMAManagedObjectsController.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8B2AF9159A5D0600C1C9C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5B8B2AFD159A5D0600C1C9C8 /* SMAManagedObjectsController-Prefix.pch */ = {isa = PBXFileReference; path = "SMAManagedObjectsController-Prefix.pch"; sourceTree = "<group>"; };
-		5B8B2AFE159A5D0600C1C9C8 /* SMAManagedObjectsController.h */ = {isa = PBXFileReference; path = SMAManagedObjectsController.h; sourceTree = "<group>"; };
-		5B8B2AFF159A5D0600C1C9C8 /* SMAManagedObjectsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAManagedObjectsController.m; sourceTree = "<group>"; };
+		5B8B2AFD159A5D0600C1C9C8 /* SMAManagedObjectsController-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SMAManagedObjectsController-Prefix.pch"; sourceTree = "<group>"; };
+		5B8B2AFE159A5D0600C1C9C8 /* SMAManagedObjectsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAManagedObjectsController.h; sourceTree = "<group>"; };
 		5B8B2B06159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMAManagedObjectsControllerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8B2B07159A5D0700C1C9C8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		5B8B2B09159A5D0700C1C9C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		5B8B2B11159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests-Info.plist */ = {isa = PBXFileReference; path = "SMAManagedObjectsControllerTests-Info.plist"; sourceTree = "<group>"; };
+		5B8B2B11159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMAManagedObjectsControllerTests-Info.plist"; sourceTree = "<group>"; };
 		5B8B2B13159A5D0700C1C9C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B8B2B15159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.h */ = {isa = PBXFileReference; path = SMAManagedObjectsControllerTests.h; sourceTree = "<group>"; };
+		5B8B2B15159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMAManagedObjectsControllerTests.h; sourceTree = "<group>"; };
 		5B8B2B16159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMAManagedObjectsControllerTests.m; sourceTree = "<group>"; };
+		5B8B2B20159A5D2F00C1C9C8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5B8B2B2A159A644B00C1C9C8 /* ManagedObjectsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectsController.h; sourceTree = "<group>"; };
+		5B8B2B2B159A644B00C1C9C8 /* ManagedObjectsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectsController.m; sourceTree = "<group>"; };
+		5B8B2B36159A64DE00C1C9C8 /* ManagedObjectValueDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectValueDisplay.h; sourceTree = "<group>"; };
+		5B8B2B37159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectValueDisplay.m; sourceTree = "<group>"; };
+		5B8B2B3E159A66F000C1C9C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5B8B2B41159A690600C1C9C8 /* ARCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8B2B3F159A66F000C1C9C8 /* UIKit.framework in Frameworks */,
+				5B8B2B21159A5D2F00C1C9C8 /* CoreData.framework in Frameworks */,
 				5B8B2AFA159A5D0600C1C9C8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,9 +72,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8B2B08159A5D0700C1C9C8 /* SenTestingKit.framework in Frameworks */,
-				5B8B2B0A159A5D0700C1C9C8 /* UIKit.framework in Frameworks */,
 				5B8B2B0B159A5D0700C1C9C8 /* Foundation.framework in Frameworks */,
 				5B8B2B0E159A5D0700C1C9C8 /* libSMAManagedObjectsController.a in Frameworks */,
+				5B8B2B3D159A661900C1C9C8 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +84,7 @@
 		5B8B2AEB159A5D0600C1C9C8 = {
 			isa = PBXGroup;
 			children = (
+				5B8B2B40159A690600C1C9C8 /* ARCHelper */,
 				5B8B2AFB159A5D0600C1C9C8 /* SMAManagedObjectsController */,
 				5B8B2B0F159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests */,
 				5B8B2AF8159A5D0600C1C9C8 /* Frameworks */,
@@ -87,9 +104,10 @@
 		5B8B2AF8159A5D0600C1C9C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B8B2B3E159A66F000C1C9C8 /* UIKit.framework */,
+				5B8B2B20159A5D2F00C1C9C8 /* CoreData.framework */,
 				5B8B2AF9159A5D0600C1C9C8 /* Foundation.framework */,
 				5B8B2B07159A5D0700C1C9C8 /* SenTestingKit.framework */,
-				5B8B2B09159A5D0700C1C9C8 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,7 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				5B8B2AFE159A5D0600C1C9C8 /* SMAManagedObjectsController.h */,
-				5B8B2AFF159A5D0600C1C9C8 /* SMAManagedObjectsController.m */,
+				5B8B2B2A159A644B00C1C9C8 /* ManagedObjectsController.h */,
+				5B8B2B2B159A644B00C1C9C8 /* ManagedObjectsController.m */,
+				5B8B2B36159A64DE00C1C9C8 /* ManagedObjectValueDisplay.h */,
+				5B8B2B37159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m */,
 				5B8B2AFC159A5D0600C1C9C8 /* Supporting Files */,
 			);
 			path = SMAManagedObjectsController;
@@ -131,6 +152,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		5B8B2B40159A690600C1C9C8 /* ARCHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5B8B2B41159A690600C1C9C8 /* ARCHelper.h */,
+			);
+			name = ARCHelper;
+			path = ../../Library/ARCHelper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -138,6 +168,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B8B2B2C159A644B00C1C9C8 /* ManagedObjectsController.h in Headers */,
+				5B8B2B38159A64DE00C1C9C8 /* ManagedObjectValueDisplay.h in Headers */,
+				5B8B2B3B159A65EB00C1C9C8 /* SMAManagedObjectsController.h in Headers */,
+				5B8B2B42159A690600C1C9C8 /* ARCHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B8B2B00159A5D0600C1C9C8 /* SMAManagedObjectsController.m in Sources */,
+				5B8B2B2D159A644B00C1C9C8 /* ManagedObjectsController.m in Sources */,
+				5B8B2B39159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8B2B17159A5D0700C1C9C8 /* SMAManagedObjectsControllerTests.m in Sources */,
+				5B8B2B3A159A64DE00C1C9C8 /* ManagedObjectValueDisplay.m in Sources */,
+				5B8B2B3C159A660500C1C9C8 /* ManagedObjectsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +358,7 @@
 				GCC_PREFIX_HEADER = "SMAManagedObjectsController/SMAManagedObjectsController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -333,6 +371,7 @@
 				GCC_PREFIX_HEADER = "SMAManagedObjectsController/SMAManagedObjectsController-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -386,6 +425,7 @@
 				5B8B2B1C159A5D0700C1C9C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B8B2B1D159A5D0700C1C9C8 /* Build configuration list for PBXNativeTarget "SMAManagedObjectsControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +434,7 @@
 				5B8B2B1F159A5D0700C1C9C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
