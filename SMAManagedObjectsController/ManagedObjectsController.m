@@ -15,14 +15,14 @@
 
 
 @interface SMAManagedObjectsController ()
-@property (ah_retain, nonatomic)    NSManagedObjectContext * managedObjectContext;
-@property (ah_retain, nonatomic)    NSManagedObject        * managedObject;
-@property (ah_retain, nonatomic)    NSString               * entityName;
+@property (strong, nonatomic)       NSManagedObjectContext * managedObjectContext;
+@property (strong, nonatomic)       NSManagedObject        * managedObject;
+@property (strong, nonatomic)       NSString               * entityName;
 @property (readwrite, nonatomic)    NSArray                * allObjects;
 @property (readwrite, nonatomic)    NSDictionary           * objectsDictionary;
-@property (ah_retain, nonatomic)    NSString               * relationshipKeyPath;
-@property (ah_retain, nonatomic)    NSString               * inverseRelationshipKeyPath;
-@property (ah_retain, nonatomic)    NSString               * sectionKeyPath;
+@property (strong, nonatomic)       NSString               * relationshipKeyPath;
+@property (strong, nonatomic)       NSString               * inverseRelationshipKeyPath;
+@property (strong, nonatomic)       NSString               * sectionKeyPath;
 @end
 
 
@@ -45,6 +45,24 @@
 @synthesize sectionKeyPath = _sectionKeyPath;
 
 
+#pragma mark -
+#pragma mark - Variables
+
+
+- (void)setAllObjects:(NSArray *)allObjects {
+    [allObjects retain];
+    [_allObjects release];
+    _allObjects = allObjects;
+}
+
+
+- (void)setObjectsDictionary:(NSDictionary *)objectsDictionary {
+    [objectsDictionary retain];
+    [_objectsDictionary release];
+    _objectsDictionary = objectsDictionary;
+}
+
+
 #pragma mark - 
 #pragma mark - Initialization
 
@@ -63,19 +81,16 @@
         
         NSError *error;
         NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
-        if (error) {
+        if (!results) {
             NSLog(@"Unresolved error fetching objects: %@", error.userInfo);
         }
         
         self.allObjects = results;
         self.sectionKeyPath = sectionKeyPath;
         self.entityName = name;
-        
         self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];
         
-        request = nil;
         [request release];
-        
         error = nil;
         results = nil;
     }
@@ -103,7 +118,6 @@
         self.inverseRelationshipKeyPath = inverseRelationshipKeyPath;
         self.allObjects = results;
         self.sectionKeyPath = sectionKeyPath; 
-        
         self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];
         
         results = nil;
@@ -111,6 +125,15 @@
     return self;
 }
 
+
+#pragma mark -
+#pragma mark - Memory Management
+
+- (void)dealloc {
+    AH_RELEASE(_allObjects);
+    AH_RELEASE(_objectsDictionary);
+    AH_SUPER_DEALLOC;
+}
 
 #pragma mark -
 #pragma mark - Private methods
@@ -143,6 +166,7 @@
             if ([keys containsObject:objectKey]) {
                 
                 // Get the arrays of objects with this key
+                
                 NSMutableArray *keyObjects = [[dictionary objectForKey:objectKey] mutableCopy];
                 
                 // If anObject is not there (you expect this to be always True)
@@ -159,6 +183,9 @@
                     // ... and replacing the new one
                     [dictionary setObject:keyObjects forKey:objectKey];
                 }
+                
+                // Memory clean up
+                [keyObjects release];
             }
             
             // If keys does not have the anObject's key
@@ -182,12 +209,13 @@
 
 - (id)keyForSection:(NSInteger)section {
     
-    NSArray *allKeys = self.objectsDictionary.allKeys;
+    NSArray *allKeys = [self.objectsDictionary allKeys];
     
     if (!allKeys || allKeys.count == 0 || section > allKeys.count)
         return nil;
     
     id key = [allKeys objectAtIndex:section];
+    
     return key;
 }
 
@@ -223,8 +251,8 @@
     // Update the array of all objects
     NSMutableArray *array = [self.allObjects mutableCopy];
     [array addObject:newObject];
-    self.allObjects = [array copy];
-    array = nil;
+    self.allObjects = array;
+    [array release];
     
     // Update the dictionary
     self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];
@@ -237,7 +265,7 @@
     if (numberOfObjectsInSection == 1 && numberOfSections == 1) {
         
         // Notify of change in section
-        [self.delegate controller:self didChangeSectionAtIndex:newObjectIndexPath.section forChangeType:ManagedObjectsChangeInsert];
+        [self.delegate controller:self didChangeSectionAtIndex:newObjectIndexPath.section forChangeType:SMAManagedObjectsChangeInsert];
     }
     else {
         
@@ -245,7 +273,7 @@
         [self.delegate controllerWillChangeContent:self];
         
         // Notify of change in object
-        [self.delegate controller:self didChangeObject:newObject atIndexPath:newObjectIndexPath forChangeType:ManagedObjectsChangeInsert newIndexPath:nil];
+        [self.delegate controller:self didChangeObject:newObject atIndexPath:newObjectIndexPath forChangeType:SMAManagedObjectsChangeInsert newIndexPath:nil];
         
         // Finish the update
         [self.delegate controllerDidChangeContent:self];
@@ -276,17 +304,17 @@
     // Update the array of all objects
     NSMutableArray *array = [self.allObjects mutableCopy];
     [array removeObject:object];
-    self.allObjects = [array copy];
-    array = nil;
+    self.allObjects = array;
+    [array release];
     
     // Update the dictionary
-    self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];
+    self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];;
     
     // Notify the delegate to update UI
     if (numberOfObjectsInSection == 1 && numberOfSections == 1) {
         
         // Notify of change in section
-        [self.delegate controller:self didChangeSectionAtIndex:indexPathToDelete.section forChangeType:ManagedObjectsChangeDelete];
+        [self.delegate controller:self didChangeSectionAtIndex:indexPathToDelete.section forChangeType:SMAManagedObjectsChangeDelete];
     }
     else {
         
@@ -294,7 +322,7 @@
         [self.delegate controllerWillChangeContent:self];
         
         // Notify of change in object
-        [self.delegate controller:self didChangeObject:object atIndexPath:indexPathToDelete forChangeType:ManagedObjectsChangeDelete newIndexPath:nil];
+        [self.delegate controller:self didChangeObject:object atIndexPath:indexPathToDelete forChangeType:SMAManagedObjectsChangeDelete newIndexPath:nil];
         
         // Finish the update
         [self.delegate controllerDidChangeContent:self];
@@ -376,9 +404,9 @@
 
 - (NSIndexPath *)indexPathOfObject:(NSManagedObject *)object {
     
-    NSIndexPath *indexPah;
     NSInteger section = 0;
-    NSInteger row;
+    NSInteger row = 0;
+    NSIndexPath *indexPah = [[NSIndexPath indexPathForRow:row inSection:section] retain];
     
     if (self.sectionKeyPath) {
         
@@ -390,7 +418,10 @@
                 
                 section = [allKeys indexOfObject:key];
                 row = [[self objectsInSection:section] indexOfObject:object];
-                indexPah = [NSIndexPath indexPathForRow:row inSection:section];
+                
+                [indexPah release];
+                indexPah = [[NSIndexPath indexPathForRow:row inSection:section] retain];
+                
                 break;
             }
         }
@@ -398,10 +429,12 @@
     else {
         
         row = [[self.objectsDictionary objectForKey:DUMMY_SECTION_NAME] indexOfObject:object];
-        indexPah = [NSIndexPath indexPathForRow:row inSection:section];
+        
+        [indexPah release];
+        indexPah = [[NSIndexPath indexPathForRow:row inSection:section] retain];
     }
     
-    return indexPah;
+    return [indexPah autorelease];
 }
 
 
@@ -417,7 +450,7 @@
     
     [self.delegate controllerWillChangeContent:self];
     
-    id newKey;
+    id newKey = nil;
     if (fromIndexPath.section != toIndexPath.section) {
         newKey = [self keyForSection:toIndexPath.section];
     }
@@ -427,7 +460,7 @@
     }
     
     self.objectsDictionary = [self dictionaryFromArray:self.allObjects keyPath:self.sectionKeyPath];
-    [self.delegate controller:self didChangeObject:object atIndexPath:fromIndexPath forChangeType:ManagedObjectsChangeMove newIndexPath:toIndexPath];
+    [self.delegate controller:self didChangeObject:object atIndexPath:fromIndexPath forChangeType:SMAManagedObjectsChangeMove newIndexPath:toIndexPath];
     
     [self.delegate controllerDidChangeContent:self];
 }

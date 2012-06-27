@@ -10,3 +10,4 @@
 #import <CoreData/CoreData.h>
 #import "ManagedObjectsController.h"
 #import "ManagedObjectValueDisplay.h"
+#import "ARCHelper.h"

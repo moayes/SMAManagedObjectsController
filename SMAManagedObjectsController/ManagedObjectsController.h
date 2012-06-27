@@ -14,20 +14,20 @@
 
 
 typedef enum {
-    ManagedObjectsChangeInsert,
-    ManagedObjectsChangeDelete,
-    ManagedObjectsChangeUpdate,
-    ManagedObjectsChangeMove
-} ManagedObjectsChange;
+    SMAManagedObjectsChangeInsert,
+    SMAManagedObjectsChangeDelete,
+    SMAManagedObjectsChangeUpdate,
+    SMAManagedObjectsChangeMove
+} SMAManagedObjectsChange;
 
 
-@protocol ManagedObjectsControllerDelegate;
+@protocol SMAManagedObjectsControllerDelegate;
 
 
 @interface SMAManagedObjectsController : NSObject
 
 // Delegate notifies objects, rows, sections that are deleted, inserted, updated
-@property (ah_weak, nonatomic) id <ManagedObjectsControllerDelegate> delegate;
+@property (unsafe_unretained, nonatomic) id <SMAManagedObjectsControllerDelegate> delegate;
 
 // Returns an array of all objects fetched, either through relationship or in the NSManagedObjectContext
 @property (readonly, nonatomic) NSArray *allObjects;
@@ -92,13 +92,13 @@ typedef enum {
 @end
 
 
-@protocol ManagedObjectsControllerDelegate <NSObject>
+@protocol SMAManagedObjectsControllerDelegate <NSObject>
 
 - (void)controllerWillChangeContent:(SMAManagedObjectsController *)controller;
 
-- (void)controller:(SMAManagedObjectsController *)controller didChangeObject:(id)object atIndexPath:(NSIndexPath *)indexPath forChangeType:(ManagedObjectsChange)type newIndexPath:(NSIndexPath *)newIndexPath;
+- (void)controller:(SMAManagedObjectsController *)controller didChangeObject:(id)object atIndexPath:(NSIndexPath *)indexPath forChangeType:(SMAManagedObjectsChange)type newIndexPath:(NSIndexPath *)newIndexPath;
 
-- (void)controller:(SMAManagedObjectsController *)controller didChangeSectionAtIndex:(NSUInteger)sectionIndex forChangeType:(ManagedObjectsChange)type;
+- (void)controller:(SMAManagedObjectsController *)controller didChangeSectionAtIndex:(NSUInteger)sectionIndex forChangeType:(SMAManagedObjectsChange)type;
 
 - (void)controllerDidChangeContent:(SMAManagedObjectsController *)controller;
 

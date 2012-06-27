@@ -20,10 +20,9 @@
 @implementation NSDate (SMAManagedObjectValueDisplay)
 - (NSString *)managedObjectValueDisplay {
     
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
 	[formatter setDateStyle:NSDateFormatterMediumStyle];
 	NSString *ret = [formatter stringFromDate:self];
-    
     formatter = nil;
     
 	return ret;
@@ -34,13 +33,12 @@
 @implementation NSNumber (SMAManagedObjectValueDisplay) 
 - (NSString *)managedObjectValueDisplay {
     
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
     formatter.minimumIntegerDigits = 1;
     formatter.maximumFractionDigits = 2;
     formatter.minimumFractionDigits = 2;
     formatter.numberStyle = NSNumberFormatterCurrencyStyle;
     NSString *ret = [formatter stringFromNumber:self];
-    
     formatter = nil;
     
     return ret;
